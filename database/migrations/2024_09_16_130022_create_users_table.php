@@ -23,16 +23,6 @@ return new class extends Migration
         });
     }
 
-    /*
-     * id (BIGINT)
-        name (STRING)
-        email (STRING)
-        password (STRING)
-        role (STRING) [admin/customer]
-        created_at (TIMESTAMP)
-        updated_at (TIMESTAMP)
-     * */
-
     /**
      * Reverse the migrations.
      */

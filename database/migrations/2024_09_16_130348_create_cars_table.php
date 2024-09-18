@@ -10,18 +10,6 @@ return new class extends Migration
      * Run the migrations.
      */
 
-    /**
-     * name (STRING)
-     * brand (STRING)
-     * model (STRING)
-     * year (INTEGER)
-     * car_type (STRING)
-     * daily_rent_price (DECIMAL)
-     * availability (BOOLEAN)
-     * image (STRING)
-     * created_at (TIMESTAMP)
-     * updated_at (TIMESTAMP)
-     */
     public function up(): void
     {
         Schema::create('cars', function (Blueprint $table) {
