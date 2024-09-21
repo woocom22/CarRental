@@ -14,10 +14,9 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->validateCsrfTokens(except: [
             'stripe/*',
-            'Controllers/*',
             'http://example.com/foo/bar',
             'http://example.com/foo/*',
-            'http://127.0.0.1:8000/user-registration/*',
+            'http://127.0.0.1:8000/login-page/*'
         ]);
     })
 

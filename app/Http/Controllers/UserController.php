@@ -48,15 +48,14 @@ class UserController extends Controller
     function UserLogin(Request $request){
        $count = User::where('email','=',$request->input('email'))
         ->where('password','=',$request->input('password'))
-        ->count();
-       if($count == 1){
+        ->select('id')->first();                              // first method ব্যাবহার করলে একটি row select হয়
+       if($count!==null){
             // User Login->JWT Token
-           $token=JWTToken::createToken($request->input('email'));
+           $token=JWTToken::createToken($request->input('email'),$count->id);
            return response()->json([
                'status'=> 'success',
-               'message'=> 'Your are successfully logged in',
-               'token'=>$token
-           ],200);
+               'message'=> 'Your are successfully logged in'
+           ],200)->cookie('token',$token,60*24*30);
        } else{
            return response()->json([
                'status'=> 'fail',

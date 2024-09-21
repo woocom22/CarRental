@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -14,10 +15,25 @@ class User extends Model
        'email',
        'password'
    ];
-   protected $attributes = [
-       'role' => 'admin/customer'
-   ];
 
+   public function isAdmin()
+   {
+       return $this->role==='admin';
+   }
+
+   public function isCustomer()
+   {
+       return $this->role==='customer';
+   }
+
+   public function rentals(): HasMany
+   {
+       return $this->hasMany(Rental::class);
+   }
+   public function rental():hasMany
+   {
+       return $this->hasMany(Rental::class);
+   }
 
     /**
      * The attributes that should be hidden for serialization.

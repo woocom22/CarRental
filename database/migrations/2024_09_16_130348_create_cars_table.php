@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('brand');
             $table->string('model');
-            $table->integer('year');
+            $table->year('year');
             $table->string('car_type');
             $table->decimal('daily_rent_price');
             $table->boolean('availability');
@@ -26,9 +26,8 @@ return new class extends Migration
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
 
         });
+
     }
-
-
 
     /**
      * Reverse the migrations.
