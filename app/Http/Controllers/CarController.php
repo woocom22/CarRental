@@ -19,7 +19,7 @@ class CarController extends Controller
     }
     function carAddForm(Request $request)
     {
-        dd($request->all());
+//        dd($request->all());
         // Prepars File Name & path
         $user_id=$request->header('id');
         $img=$request->file('image');

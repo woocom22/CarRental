@@ -84,29 +84,8 @@
 
     <a href="{{url("/categoryPage")}}" class="side-bar-item">
         <i class="bi bi-list-nested"></i>
-        <span class="side-bar-item-caption">Category</span>
+        <span class="side-bar-item-caption">Customers</span>
     </a>
-
-    <a href="{{url("/productPage")}}" class="side-bar-item">
-        <i class="bi bi-bag"></i>
-        <span class="side-bar-item-caption">Product</span>
-    </a>
-
-    <a href="{{url('/salePage')}}" class="side-bar-item">
-        <i class="bi bi-currency-dollar"></i>
-        <span class="side-bar-item-caption">Create Sale</span>
-    </a>
-
-    <a href="{{url('/invoicePage')}}" class="side-bar-item">
-        <i class="bi bi-receipt"></i>
-        <span class="side-bar-item-caption">Invoice</span>
-    </a>
-
-    <a href="{{url('/reportPage')}}" class="side-bar-item">
-        <i class="bi bi-file-earmark-bar-graph"></i>
-        <span class="side-bar-item-caption">Report</span>
-    </a>
-
 
 </div>
 

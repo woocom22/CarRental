@@ -23,6 +23,7 @@
                             <th>Car Type</th>
                             <th>Daily Rent Price</th>
                             <th>Availability</th>
+                            <th>Image</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -40,13 +41,13 @@
 
     getList();
 
-
     async function getList() {
-
-
         showLoader();
         let res=await axios.get("/car-list");
         hideLoader();
+
+
+
 
         let tableList=$("#tableList");
         let tableData=$("#tableData");
@@ -64,6 +65,7 @@
                     <td>${item['car_type']}</td>
                     <td>${item['daily_rent_price']}</td>
                     <td>${item['availability']}</td>
+                    <td>${item['image']}</td>
                     <td>
                         <button data-id="${item['id']}" class="btn editBtn btn-sm btn-outline-success">Edit</button>
                         <button data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
@@ -79,6 +81,10 @@
 
 
         })
+
+
+
+
 
         $('.deleteBtn').on('click',function () {
             let id= $(this).data('id');

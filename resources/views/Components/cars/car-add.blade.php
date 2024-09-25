@@ -22,7 +22,7 @@
                             </div>
                             <div class="col-12 p-1">
                                 <label class="form-label">year *</label>
-                                <input type="date" class="form-control" id="year">
+                                <input type="number" class="form-control" id="year">
                             </div>
                             <div class="col-12 p-1">
                                 <label class="form-label">Car type *</label>
@@ -37,8 +37,11 @@
                                 <input type="text" class="form-control" id="availability">
                             </div>
                             <div class="col-12 p-1">
+                                <br/>
+                                    <img class="w-15" id="newImg" src="{{  asset('images/default.jpg') }}"/>
+                                <br/>
                                 <label class="form-label">Image *</label>
-                                <input type="file" class="form-control" id="image">
+                                <input oninput="newImg.src=window.URL.createObjectURL(this.files[0])" type="file" class="form-control" id="image">
                             </div>
                         </div>
                     </div>
@@ -62,13 +65,9 @@
         let car_type = document.getElementById('car_type').value;
         let daily_rent_price = document.getElementById('daily_rent_price').value;
         let availability = document.getElementById('availability').value;
-        let image = document.getElementById('image').value;
-        const config = {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
+        let carImage = document.getElementById('image').files[0];
 
-            if (carName.length === 0) {
+        if (carName.length === 0) {
             errorToast("Car Name Required !")
         } else if (carBrand.length === 0) {
             errorToast("Car Brand Required !")
@@ -88,12 +87,28 @@
         else if (availability.length === 0) {
             errorToast("Availability Required !")
         }
-        else if (image.length === 0) {
+        else if (!carImage) {
             errorToast("Image Required !")
         }
         else {
             document.getElementById('modal-close').click();
+
             let formData=new FormData();
+            formData.append('name',carName)
+            formData.append('brand',carBrand)
+            formData.append('model',carModel)
+            formData.append('year',year)
+            formData.append('car_type',car_type)
+            formData.append('daily_rent_price',daily_rent_price)
+            formData.append('availability',availability)
+            formData.append('image',carImage)
+
+            const config = {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                }
+            }
+
             showLoader();
             let res = await axios.post("/car-add-page",formData,config);
             hideLoader();

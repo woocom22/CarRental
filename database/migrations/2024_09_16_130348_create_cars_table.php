@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('brand');
             $table->string('model');
-            $table->year('year');
+            $table->integer('year');
             $table->string('car_type');
             $table->decimal('daily_rent_price');
             $table->boolean('availability');
