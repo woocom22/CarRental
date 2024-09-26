@@ -24,6 +24,9 @@ Route::get('/car-page',[CarController::class, 'carFormPage'])->middleware([Token
 
 Route::post('/car-add-page',[CarController::class, 'carAddForm'])->middleware([TokenVerificationMiddleware::class]);
 Route::get('/car-list',[CarController::class, 'carList'])->middleware([TokenVerificationMiddleware::class]);
+Route::post('/car-delete',[CarController::class, 'carDelete'])->middleware([TokenVerificationMiddleware::class]);
+Route::post('/car-update',[CarController::class, 'CarUpdate'])->middleware([TokenVerificationMiddleware::class]);
+Route::post('/car-by-id',[CarController::class, 'carById'])->middleware([TokenVerificationMiddleware::class]);
 
 
 // Rental API

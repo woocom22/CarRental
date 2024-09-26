@@ -4,7 +4,7 @@
             <div class="card px-5 py-5">
                 <div class="row justify-content-between ">
                     <div class="align-items-center col">
-                        <h4>Car</h4>
+                        <h4>Cars</h4>
                     </div>
                     <div class="align-items-center col">
                         <button data-bs-toggle="modal" data-bs-target="#create-modal" class="float-end btn m-0 bg-gradient-primary">Create</button>
@@ -47,8 +47,6 @@
         hideLoader();
 
 
-
-
         let tableList=$("#tableList");
         let tableData=$("#tableData");
 
@@ -65,10 +63,10 @@
                     <td>${item['car_type']}</td>
                     <td>${item['daily_rent_price']}</td>
                     <td>${item['availability']}</td>
-                    <td>${item['image']}</td>
+                    <td><img class="w-65" src="${item['image']}"></td>
                     <td>
-                        <button data-id="${item['id']}" class="btn editBtn btn-sm btn-outline-success">Edit</button>
-                        <button data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
+                        <button data-path="${item['image']}" data-id="${item['id']}" class="btn editBtn btn-sm btn-outline-success">Edit</button>
+                        <button data-path="${item['image']}" data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
                     </td>
                  </tr>`
             tableList.append(row)
@@ -76,21 +74,21 @@
 
         $('.editBtn').on('click', async function () {
             let id= $(this).data('id');
-            await FillUpUpdateForm(id)
+            let  filePath=$(this).data('path');
+            await FillUpUpdateForm(id,filePath)
             $("#update-modal").modal('show');
 
-
         })
-
-
-
-
 
         $('.deleteBtn').on('click',function () {
             let id= $(this).data('id');
+            let  filePath=$(this).data('path');
             $("#delete-modal").modal('show');
             $("#deleteID").val(id);
+            $("#deleteFilePath").val(filePath)
         })
+
+
 
         new DataTable('#tableData',{
             order:[[0,'desc']],

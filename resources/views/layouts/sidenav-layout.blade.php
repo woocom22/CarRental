@@ -79,7 +79,7 @@
 
     <a href="{{url("/car-page")}}" class="side-bar-item">
         <i class="bi bi-people"></i>
-        <span class="side-bar-item-caption">Car</span>
+        <span class="side-bar-item-caption">Cars</span>
     </a>
 
     <a href="{{url("/categoryPage")}}" class="side-bar-item">
